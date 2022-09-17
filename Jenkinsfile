@@ -51,7 +51,7 @@ pipeline {
 
             steps {
               
-		    sh 'docker run -itd -v /jenkins-data/maven-data/target:/usr/local/tomcat/webapps --name server2 tomactimg bash'
+		    sh 'docker run -itd -v /jenkins-data/maven-data/target:/usr/local/tomcat/webapps --name server2 tomcatimg bash'
                 }
             
         }
