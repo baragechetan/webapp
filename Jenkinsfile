@@ -37,5 +37,24 @@ pipeline {
                 }
             
         }
+		
+		stage ('Create Image') {
+
+            steps {
+                
+                    sh 'docker build -t tomcatimg .'
+                }
+            
+        }
+		
+		stage ('Create and Run Container') {
+
+            steps {
+                
+                    sh 'docker run -itd --name tserver tomcatimg bash'
+                }
+            
+        }
+		
     }
 }
