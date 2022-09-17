@@ -1,4 +1,4 @@
-version: '1.0'
+version: '1'
 services:
  web_server:
   image: 'tomcat:9'
