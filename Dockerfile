@@ -1,3 +1,2 @@
 FROM tomcat:9
-CMD ["catalina.sh", "run"]
-EXPOSE 8090
+CMD ["startup.sh", "run"]
