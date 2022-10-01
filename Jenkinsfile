@@ -32,11 +32,12 @@ pipeline {
 
             steps {       
 				sshagent(['deploy-user']) {
+				
 							sh 'scp -o StrictHostKeyChecking=no /root/.jenkins/workspace/active-bond-war/target/*.war dev@34.221.107.99:/mnt/demowar'
 							sh 'ssh dev@34.221.107.99 sudo rm -rf /mnt/project/dockerimgs/*'
 							sh 'ssh dev@34.221.107.99 sudo git clone https://github.com/baragechetan/dockerimgs.git /mnt/project/dockerimgs'
 							sh 'ssh dev@34.221.107.99 sudo docker build -t tomcatimg /mnt/project/dockerimgs'
-							sh 'ssh dev@34.221.107.99 sudo docker run -itd -p 8090:8080 tomcatimg chetanb1011/tomcatimg' 
+							sh 'ssh dev@34.221.107.99 sudo docker run -itd -v /mnt/demowar.war:/usr/local/tomcat/webapps -p 8090:8080 tomcatimg chetanb1011/tomcatimg' 
 						}
 		
                 }
@@ -46,4 +47,3 @@ pipeline {
 		
     }
 }
-
