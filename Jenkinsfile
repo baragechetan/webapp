@@ -34,7 +34,7 @@ pipeline {
 
             steps {
               
-		    sh 'cp /root/.jenkins/workspace/active-bond-war/target/*.war:/mnt/webserver/apache-tomcat-9.0.67/webapps'
+		    sh 'cp /root/.jenkins/workspace/active-bond-war/target/*.war /mnt/webserver/apache-tomcat-9.0.67/webapps'
                 }
             
         }
