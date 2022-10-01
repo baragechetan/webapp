@@ -35,7 +35,7 @@ pipeline {
                 
 						sshagent(['deploy-user']) {
 								
-								sh 'scp -o StrictHostKeyChecking=no /mnt/docker-demo ec2-user@54.202.159.228:/mnt/demowar'
+								sh 'scp -o StrictHostKeyChecking=no /mnt/docker-demo/*.war ec2-user@54.202.159.228:/mnt/demowar'
 						}
 		
                 }
