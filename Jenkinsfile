@@ -37,7 +37,7 @@ pipeline {
 							sh 'ssh dev@34.221.107.99 sudo git clone https://github.com/baragechetan/dockerimgs.git /mnt/project'
 							sh 'ssh dev@34.221.107.99 sudo docker build -t tomcatimg /mnt/project'
 							sh 'ssh dev@34.221.107.99 sudo docker run -itd -v /mnt/demowar.war:/usr/local/tomcat/webapps -p 8090:8080 tomcatimg chetanb1011/tomcatimg'
-							sh 'ssh dev@34.221.107.99 sudo rm -rf /mnt/project/*'
+							sh 'ssh dev@34.221.107.99 sudo rm -rf /mnt/project/'
 						}
 		
                 }
