@@ -29,26 +29,15 @@ pipeline {
             
         }
 		
-	stage ('Copy to DockerFile directory') {
-
-            steps {
-			sh 'cp /root/.jenkins/workspace/active-bond-war/target/*.war .'
-                }
-            
-        }
-	stage ('Create Image') {
+		stage ('Depoly_on_dev') {
 
             steps {
                 
-                    sh 'docker build -t chetanb1011/tomcatimg .'
-                }
-        }
+						sshagent(['deploy-user']) {
+								
+								sh 'scp /root/.jenkins/workspace/active-bond-war/target ec2-user@54.202.159.228:/mnt/demowar'
+						}
 		
-	stage ('Push on Docker HUB') {
-
-            steps {
-                
-                    sh 'docker push chetanb1011/tomcatimg'
                 }
             
         }
@@ -56,3 +45,5 @@ pipeline {
 		
     }
 }
+
+
