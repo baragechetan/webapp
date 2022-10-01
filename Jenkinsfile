@@ -20,7 +20,6 @@ pipeline {
             
         }
 
-
         stage ('Install Stage') {
             steps {
                 
@@ -31,11 +30,14 @@ pipeline {
 		
 		stage ('Depoly_on_dev') {
 
-            steps {
-       
-						sshagent(['deploy-user']) {
-								
-								sh 'scp -o StrictHostKeyChecking=no /root/.jenkins/workspace/active-bond-war/target/*.war dev@34.221.107.99:/mnt/demowar'
+            steps {       
+				sshagent(['deploy-user']) {
+				
+							sh 'scp -o StrictHostKeyChecking=no /root/.jenkins/workspace/active-bond-war/target/*.war dev@34.221.107.99:/mnt/demowar'
+							
+							sh 'docker build -t tomcatimg .
+							
+							sh 'docker run -itd -v /mnt/demowar:/usr/local/tomcat/webapps -p 8090:8080 tomcatimg'
 						}
 		
                 }
@@ -45,5 +47,4 @@ pipeline {
 		
     }
 }
-
 
