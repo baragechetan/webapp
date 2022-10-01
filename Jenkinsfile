@@ -38,6 +38,22 @@ pipeline {
                 }
             
         }
+	    stage ('Create Image') {
+
+            steps {
+                
+                    sh 'docker build -t chetanb1011/tomcatimg .'
+                }
+        }
+		
+		stage ('Push on Docker HUB') {
+
+            steps {
+                
+                    sh 'docker push chetanb1011/tomcatimg'
+                }
+            
+        }
 		
 		
     }
