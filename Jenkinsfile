@@ -28,17 +28,15 @@ pipeline {
                 }
             
         }
-        
 		
-		stage ('Copy to webapps') {
+	stage ('Copy to DockerFile directory') {
 
             steps {
-              
-		    sh 'cp /root/.jenkins/workspace/active-bond-war/target/*.war /mnt/webserver/apache-tomcat-9.0.67/webapps'
+			sh 'cp /root/.jenkins/workspace/active-bond-war/target/*.war .'
                 }
             
         }
-	    stage ('Create Image') {
+	stage ('Create Image') {
 
             steps {
                 
@@ -46,7 +44,7 @@ pipeline {
                 }
         }
 		
-		stage ('Push on Docker HUB') {
+	stage ('Push on Docker HUB') {
 
             steps {
                 
