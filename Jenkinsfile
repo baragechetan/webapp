@@ -28,6 +28,17 @@ pipeline {
                 }
             
         }
-        		
+        
+		
+		stage ('Copy to webapps') {
+
+            steps {
+              
+		    sh 'cp /root/.jenkins/workspace/active-bond-war/target/*.war:/mnt/webserver/apache-tomcat-9.0.67/webapps'
+                }
+            
+        }
+		
+		
     }
 }
