@@ -26,9 +26,9 @@ pipeline {
 
 		stage ('Depoly_on_dev2') {
 			steps {       	
-					sh 'scp /root/.jenkins/workspace/active-bond-war/target/*.war dev@10.0.3.172:/mnt/demowar'
+					sh 'scp /root/.jenkins/workspace/active-bond-war/target/*.war dev@10.0.3.172:/mnt/artifacts'
 					sh 'ssh dev@10.0.3.172 sudo docker pull tomcat'
-					sh 'ssh dev@10.0.3.172 sudo docker run -itd -v /mnt/demowar:/usr/local/tomcat/webapps -p 8081-8090:8080 tomcat'						
+					sh 'ssh dev@10.0.3.172 sudo docker run -itd -v /mnt/artifacts:/usr/local/tomcat/webapps -p 8081-8090:8080 tomcat'						
 		
             }  
         }	
